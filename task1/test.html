@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      button:active {
+        background-color: yellow;
+      }
+    </style>
+    <script>
+        const btnEl = document.querySelector('.btn.certo')
+        btnEl.addEventListener('click', () => {
+            btnEl.className = 'vermelho'
+        })
+    </script>
+  </head>
+  <body>
+    <h1>Demo of the :active selector</h1>
+
+    <button class="btn certo">W3schools.com</button><br />
+    <a href="https://www.w3schools.com/html/">HTML</a><br />
+    <a href="https://www.w3schools.com/css/">CSS</a>
+
+    <p><b>Note:</b> The :active selector styles the active link.</p>
+  </body>
+</html>
