@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [data, setData] = useState("waiting for the useEffect to run!");
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await fetch("http://localhost:8080/api/test");
+        const text = await res.text();
+        console.log(`Message from our API: "${text}"`);
+        setData(text);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getData();
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Backend /api/test route content</h3>
+      <span>{data}</span>
     </div>
   );
 }
